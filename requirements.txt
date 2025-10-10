@@ -1,0 +1,89 @@
+# Core ML/DL Frameworks
+torch>=2.0.0
+transformers>=4.35.0
+datasets>=2.14.0
+accelerate>=0.24.0
+
+# OpenAI and Anthropic APIs
+openai>=1.3.0
+anthropic>=0.7.0
+
+# LangChain Ecosystem
+langchain>=0.1.0
+langchain-openai>=0.0.2
+langchain-anthropic>=0.1.0
+langchain-community>=0.0.10
+langchain-core>=0.1.0
+
+# Vector Stores and Embeddings
+chromadb>=0.4.18
+faiss-cpu>=1.7.4
+sentence-transformers>=2.2.2
+
+# NLP Tools
+nltk>=3.8.1
+spacy>=3.7.0
+seqeval>=1.2.2
+
+# Evaluation Metrics
+evaluate>=0.4.1
+bert-score>=0.3.13
+rouge-score>=0.1.2
+sacrebleu>=2.3.1
+py-rouge>=1.1
+
+# Fine-tuning and PEFT
+peft>=0.7.0
+bitsandbytes>=0.41.0
+
+# API and Web Frameworks
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+python-multipart>=0.0.6
+
+# UI Frameworks
+gradio>=4.7.0
+streamlit>=1.28.0
+
+# Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.11.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+tqdm>=4.66.0
+
+# PDF Processing (for RAG)
+pypdf>=3.17.0
+PyPDF2>=3.0.0
+
+# Additional Tools
+redis>=5.0.0
+celery>=5.3.0
+
+# Monitoring and Logging
+prometheus-client>=0.19.0
+slowapi>=0.1.9
+
+# Development Tools
+jupyter>=1.0.0
+ipywidgets>=8.1.0
+notebook>=7.0.0
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+httpx>=0.25.0
+
+# Code Quality (optional)
+black>=23.11.0
+flake8>=6.1.0
+mypy>=1.7.0

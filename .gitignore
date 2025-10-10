@@ -172,3 +172,38 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# NLP/ML specific
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.safetensors
+models/
+checkpoints/
+*.model
+*.pkl
+*.pickle
+
+# Vector stores and databases
+*.faiss
+chroma_db/
+vectorstore/
+*.db
+
+# Training outputs
+results/
+logs/
+wandb/
+runs/
+lightning_logs/
+
+# Sample data directories
+sample_docs/
+data/
+datasets/
+
+# API and deployment
+*.key
+api.log
+monitoring_api.log
