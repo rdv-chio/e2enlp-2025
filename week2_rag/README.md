@@ -14,6 +14,9 @@ Multiple RAG implementations to explore:
 2. **`rag_with_chroma.py`** - Persistent storage with ChromaDB
 3. **`conversational_rag.py`** - RAG with conversation memory
 4. **`rag_with_custom_docs.py`** - Load your own documents
+5. **`langchain_chaining.py`** - LangChain utilities and chaining patterns (NEW)
+6. **`retrieval_strategies.py`** - Advanced retrieval strategies (NEW)
+7. **`ollama_local_rag.py`** - Local models with Ollama (NEW)
 
 ## 🚀 Quick Start
 
@@ -113,7 +116,141 @@ python rag_with_custom_docs.py --docs-dir ./my_documents --query "Your question"
 
 ---
 
+### 5. LangChain Chaining (Advanced Patterns)
+
+```bash
+# Run all chaining examples
+python langchain_chaining.py --demo all
+
+# Sequential chains (multi-step)
+python langchain_chaining.py --demo sequential
+
+# Parallel chains (multiple analyses)
+python langchain_chaining.py --demo parallel
+
+# Routing chains (conditional logic)
+python langchain_chaining.py --demo routing
+
+# LCEL (modern syntax)
+python langchain_chaining.py --demo lcel
+
+# Map-reduce pattern
+python langchain_chaining.py --demo mapreduce
+```
+
+**Features**:
+- Sequential chains: Multi-step transformations
+- Parallel chains: Multiple analyses simultaneously
+- Routing chains: Conditional logic based on input
+- LCEL (LangChain Expression Language): Modern composable chains
+- Map-reduce: Process multiple documents
+
+**Use cases**:
+- Complex workflows (translate → summarize → analyze)
+- Multi-aspect analysis (sentiment + entities + summary)
+- Smart routing to specialized models
+- Document batch processing
+
+---
+
+### 6. Advanced Retrieval Strategies
+
+```bash
+# Compare all strategies
+python retrieval_strategies.py --strategy compare
+
+# Similarity search (standard)
+python retrieval_strategies.py --strategy similarity
+
+# MMR (diverse results)
+python retrieval_strategies.py --strategy mmr
+
+# Hybrid search (dense + sparse)
+python retrieval_strategies.py --strategy hybrid
+
+# Contextual compression
+python retrieval_strategies.py --strategy compression
+
+# Multi-query retrieval
+python retrieval_strategies.py --strategy multiquery
+
+# Run all demos
+python retrieval_strategies.py --strategy all
+```
+
+**Strategies**:
+1. **Similarity Search**: Standard cosine similarity
+2. **MMR**: Balance relevance and diversity
+3. **Threshold**: Filter by confidence score
+4. **Hybrid**: Combine dense (embeddings) + sparse (BM25)
+5. **Contextual Compression**: Extract only relevant parts
+6. **Multi-Query**: Generate query variations
+7. **Parent Document**: Search chunks, return full docs
+
+**Best practices**:
+- Use **similarity** for general queries
+- Use **MMR** to avoid redundant results
+- Use **hybrid** for production systems
+- Use **compression** for long documents
+- Use **threshold** for high-precision needs
+
+---
+
+### 7. Local Models with Ollama
+
+```bash
+# First, install Ollama: https://ollama.ai/
+# Then pull models:
+ollama pull qwen2.5:latest
+ollama pull gemma2:2b
+ollama pull llama3.2:latest
+
+# List available models
+python ollama_local_rag.py --list-models
+
+# Test embeddings
+python ollama_local_rag.py --test-embeddings
+
+# Use with Qwen
+python ollama_local_rag.py --model qwen2.5:latest
+
+# Use with Gemma
+python ollama_local_rag.py --model gemma2:2b
+
+# Interactive mode
+python ollama_local_rag.py --model qwen2.5:latest --interactive
+
+# With streaming
+python ollama_local_rag.py --model qwen2.5:latest --stream
+
+# Compare models
+python ollama_local_rag.py --compare-models
+```
+
+**Popular Models**:
+- **Qwen 2.5** (Alibaba): Excellent performance, multilingual
+- **Gemma 2** (Google): Lightweight, fast, 2B/7B/27B variants
+- **Llama 3.2** (Meta): Well-rounded, strong reasoning
+- **Mistral** (Mistral AI): Efficient, good at coding
+- **Phi 3** (Microsoft): Small but capable
+
+**Benefits of Local Models**:
+- Privacy: Data stays on your machine
+- No API costs: Run unlimited queries
+- No rate limits: Scale freely
+- Offline capable: No internet needed
+- Customizable: Full control over model
+
+**Embedding Models**:
+- **nomic-embed-text**: General purpose, 768 dimensions
+- **mxbai-embed-large**: High quality, 1024 dimensions
+- **all-minilm**: Fast, lightweight
+
+---
+
 ## 📊 Comparison
+
+### Core RAG Implementations
 
 | Feature | Basic RAG | ChromaDB | Conversational | Custom Docs |
 |---------|-----------|----------|----------------|-------------|
@@ -122,6 +259,15 @@ python rag_with_custom_docs.py --docs-dir ./my_documents --query "Your question"
 | Metadata | ❌ | ✅ | ❌ | ✅ |
 | File Loading | ❌ | ❌ | ❌ | ✅ |
 | Best For | Learning | Production | Chatbots | Documents |
+
+### Advanced Features
+
+| Feature | Chaining | Retrieval Strategies | Ollama Local |
+|---------|----------|---------------------|--------------|
+| Focus | Workflow patterns | Retrieval optimization | Local models |
+| API Required | ✅ | ✅ | ❌ |
+| Learning Curve | Medium | Medium | Easy |
+| Best For | Complex workflows | Production RAG | Privacy/Cost savings |
 
 ## 💡 Usage Examples
 
@@ -165,6 +311,42 @@ mkdir my_docs
 
 # Query your documents
 python rag_with_custom_docs.py --docs-dir ./my_docs --query "Summarize key points"
+```
+
+### Example 5: Advanced Chaining
+```bash
+# Multi-step workflow: generate → transform → analyze
+python langchain_chaining.py --demo sequential
+
+# Parallel analysis: sentiment + entities + summary
+python langchain_chaining.py --demo parallel
+
+# Smart routing to specialized models
+python langchain_chaining.py --demo routing
+```
+
+### Example 6: Optimize Retrieval
+```bash
+# Compare retrieval strategies
+python retrieval_strategies.py --strategy compare
+
+# Use hybrid search for best results
+python retrieval_strategies.py --strategy hybrid
+
+# Compress results to reduce noise
+python retrieval_strategies.py --strategy compression
+```
+
+### Example 7: Run RAG Locally
+```bash
+# Install Ollama and pull a model
+ollama pull qwen2.5:latest
+
+# Run local RAG (no API key needed!)
+python ollama_local_rag.py --model qwen2.5:latest --interactive
+
+# Compare different local models
+python ollama_local_rag.py --compare-models
 ```
 
 ## 🛠️ How Each Works
