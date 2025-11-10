@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  # The RAG API Backend
+  api:
+    build:
+      context: ../../  # Build from the root of e2enlp-2025
+      dockerfile: ./week5_deployment/docker/Dockerfile.rag # Use our new RAG Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # Pass the API key from your local .env file into the container
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      # Mount the vectorstore you built locally into the container
+      - ../vectorstore:/app/vectorstore
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    restart: unless-stopped
+
+  # The Streamlit UI Frontend
+  ui:
+    build:
+      context: ../../  # Build from the root of e2enlp-2025
+      dockerfile: ./week5_deployment/docker/Dockerfile.ui # Use our new UI Dockerfile
+    ports:
+      - "8501:8501"
+    environment:
+      # Tell the UI where to find the API.
+      # 'api' is the service name from this file.
+      - API_URL=http://api:8000/generate-goals
+    depends_on:
+      api:
+        condition: service_healthy # Wait for the API to be healthy
+    restart: unless-stopped

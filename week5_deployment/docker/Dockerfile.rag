@@ -1,0 +1,24 @@
+# Use the same stable Python version
+FROM python:3.11-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the requirements file from the project root
+# (Assumes docker-compose context is root)
+COPY ./requirements.txt .
+
+# Install curl so the healthcheck can work
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Install all dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the RAG API script into the container
+COPY ./week5_deployment/api/iep_rag_api.py .
+
+# Expose the port the API runs on
+EXPOSE 8000
+
+# Run the application
+CMD ["uvicorn", "iep_rag_api:app", "--host", "0.0.0.0", "--port", "8000"]

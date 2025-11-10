@@ -25,7 +25,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Define persistent storage path
-VECTORSTORE_PATH = str(Path(__file__).parent.parent / "vectorstore")
+#VECTORSTORE_PATH = str(Path(__file__).parent.parent / "vectorstore")
+VECTORSTORE_PATH = "./vectorstore"
 
 load_dotenv()
 

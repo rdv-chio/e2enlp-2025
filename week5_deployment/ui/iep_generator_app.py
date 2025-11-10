@@ -12,13 +12,15 @@ import streamlit as st
 import requests
 import json
 import logging
+import os
 
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # API endpoint
-API_URL = "http://localhost:8000/generate-goals" # Assumes API is on port 8000
+#API_URL = "http://localhost:8000/generate-goals" # Assumes API is on port 8000
+API_URL = os.getenv("API_URL", "http://localhost:8000/generate-goals")
 
 # --- Page Configuration ---
 st.set_page_config(
